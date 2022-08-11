@@ -43,6 +43,18 @@ def std():
     print("std")
 
 def taiko():
+    hitsoundArray = []
+    newHitsound = True
+
+    for i in range(objectAreaIndex,len(dataArray)):
+        for j in range(len(hitsoundArray)):
+            if(hitsoundArray[j] == dataArray[i][find_nth_overlapping(dataArray,",", 4)+1:find_nth_overlapping(dataArray,",", 5)]):
+                newHitsound = False
+                break
+            else:
+                newHitsound = True
+        if(newHitsound):
+            hitsoundArray.append(dataArray[i][find_nth_overlapping(dataArray,",", 4)+1:find_nth_overlapping(dataArray,",", 5)])
     print("taiko")
 
 def ctb():
