@@ -83,6 +83,9 @@ def mania():
                 dataArray[objectAreaIndex+totalNoteNum+k] = xPos[randomChoose[randSave]] + tempStore
                 randomChoose.pop(randSave)
                 firstCheck = False
+            if (dataArray[objectAreaIndex+totalNoteNum+k][find_nth_overlapping(dataArray[objectAreaIndex+totalNoteNum+k], ",", 5):dataArray[objectAreaIndex+totalNoteNum+k].find(":")] != "0"):
+                lnArray.append(dataArray[objectAreaIndex+totalNoteNum+k][0:dataArray[objectAreaIndex+totalNoteNum+k].find(",")] + dataArray[objectAreaIndex+totalNoteNum+k][find_nth_overlapping(dataArray[objectAreaIndex+totalNoteNum+k], ",", 2):find_nth_overlapping(dataArray[objectAreaIndex+totalNoteNum+k], ",", 3) ] + dataArray[objectAreaIndex+totalNoteNum+k][find_nth_overlapping(dataArray[objectAreaIndex+totalNoteNum+k], ",", 5):dataArray[objectAreaIndex+totalNoteNum+k].find(":")])
+
         randomChoose.clear()
         
         noteTiming = dataArray[objectAreaIndex+totalNoteNum+noteNum][dataArray[objectAreaIndex+totalNoteNum+noteNum].find(",", dataArray[objectAreaIndex+totalNoteNum+noteNum].find(",")+1)+1:dataArray[objectAreaIndex+totalNoteNum+noteNum].find(",", dataArray[objectAreaIndex+totalNoteNum+noteNum].find(",", dataArray[objectAreaIndex+totalNoteNum+noteNum].find(",")+1)+1)]
