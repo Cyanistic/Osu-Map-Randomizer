@@ -43,8 +43,8 @@ def std():
     print("std")
 
 def taiko():
-    hitsoundArray = []
-    newHitsound = True
+    hitsoundArray = ["8","0","12","4"]
+    """ newHitsound = True
 
     for i in range(objectAreaIndex,len(dataArray)):
         for j in range(len(hitsoundArray)):
@@ -55,9 +55,12 @@ def taiko():
                 newHitsound = True
         if(newHitsound):
             hitsoundArray.append(dataArray[i][find_nth_overlapping(dataArray[i],",", 4)+1:find_nth_overlapping(dataArray[i],",", 5)])
-
+ """
     for i in range(objectAreaIndex,len(dataArray)):
-        dataArray[i] = dataArray[i][0:find_nth_overlapping(dataArray[i],",", 4)+1] + hitsoundArray[random.randint(0,len(hitsoundArray)-1)] + dataArray[i][find_nth_overlapping(dataArray[i],",", 5):]
+        if(dataArray[i][find_nth_overlapping(dataArray[i],",", 4)+1:find_nth_overlapping(dataArray[i],",", 5)] == "0" or dataArray[i][find_nth_overlapping(dataArray[i],",", 4)+1:find_nth_overlapping(dataArray[i],",", 5)] == "8"):
+            dataArray[i] = dataArray[i][0:find_nth_overlapping(dataArray[i],",", 4)+1] + hitsoundArray[random.randint(0,1)] + dataArray[i][find_nth_overlapping(dataArray[i],",", 5):]
+        else:
+            dataArray[i] = dataArray[i][0:find_nth_overlapping(dataArray[i],",", 4)+1] + hitsoundArray[random.randint(2,3)] + dataArray[i][find_nth_overlapping(dataArray[i],",", 5):]
     
     out = open(input("Enter the output file name:"), "w")
     out.writelines(dataArray)
