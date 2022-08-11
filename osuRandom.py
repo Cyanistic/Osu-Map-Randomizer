@@ -66,7 +66,6 @@ def mania():
     noteNum = 0
     lnArray = []
     noteTiming = dataArray[objectAreaIndex][dataArray[objectAreaIndex].find(",", dataArray[objectAreaIndex].find(",")+1)+1:dataArray[objectAreaIndex].find(",", dataArray[objectAreaIndex].find(",", dataArray[objectAreaIndex].find(",")+1)+1)]
-    print(noteTiming)
     dataArray.append("")
 
     while (totalNoteNum+1 < len(dataArray)-objectAreaIndex):
@@ -90,11 +89,10 @@ def mania():
         totalNoteNum += noteNum
         noteNum = 0
 
-    print(lnArray)
     out = open(input("Enter the output file name:"), "w")
     out.writelines(dataArray)
-    print(dataArray[objectAreaIndex:len(dataArray)])
-    print("mania")
+    # print(dataArray[objectAreaIndex:len(dataArray)])
+    print("Success!")
 
 match gamemode:
     case 0:
