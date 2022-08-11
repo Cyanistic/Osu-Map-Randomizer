@@ -40,9 +40,12 @@ def lnCheck(data, ln):
     return False
 
 def std():
-    print("std")
+    print("Standard map detected.")
+    print("This gamemode is not supported yet.")
 
 def taiko():
+    print("Taiko map detected.")
+
     hitsoundArray = ["8","0","12","4"]
     """ newHitsound = True
 
@@ -68,9 +71,12 @@ def taiko():
     print("Success!")
 
 def ctb():
-    print("ctb")
+    print("CTB map detected.")
+    print("This gamemode is not supported yet.")
 
 def mania():
+    print("Mania map detected.")
+
     xPos = []
     newKey = True
     
