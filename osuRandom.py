@@ -101,13 +101,11 @@ def mania():
         while(noteTiming == dataArray[objectAreaIndex+totalNoteNum+noteNum][dataArray[objectAreaIndex+totalNoteNum+noteNum].find(",", dataArray[objectAreaIndex+totalNoteNum+noteNum].find(",")+1)+1:dataArray[objectAreaIndex+totalNoteNum+noteNum].find(",", dataArray[objectAreaIndex+totalNoteNum+noteNum].find(",", dataArray[objectAreaIndex+totalNoteNum+noteNum].find(",")+1)+1)] and totalNoteNum+noteNum+1 < len(dataArray)-objectAreaIndex):
             noteNum +=1
         for k in range(noteNum):
-            firstCheck = True
-            while(lnCheck(dataArray[objectAreaIndex+totalNoteNum+k], lnArray) or firstCheck):
+            while(lnCheck(dataArray[objectAreaIndex+totalNoteNum+k], lnArray) or len(randomChoose) == 4 and noteNum != len(xPos)):
                 tempStore = dataArray[objectAreaIndex+totalNoteNum+k][dataArray[objectAreaIndex+totalNoteNum+k].find(","):len(dataArray[objectAreaIndex+totalNoteNum+k])]
                 randSave = random.randint(0, len(randomChoose)-1)
                 dataArray[objectAreaIndex+totalNoteNum+k] = xPos[randomChoose[randSave]] + tempStore
                 randomChoose.pop(randSave)
-                firstCheck = False
             if (dataArray[objectAreaIndex+totalNoteNum+k][find_nth_overlapping(dataArray[objectAreaIndex+totalNoteNum+k], ",", 5):dataArray[objectAreaIndex+totalNoteNum+k].find(":")] != "0"):
                 lnArray.append(dataArray[objectAreaIndex+totalNoteNum+k][0:dataArray[objectAreaIndex+totalNoteNum+k].find(",")] + dataArray[objectAreaIndex+totalNoteNum+k][find_nth_overlapping(dataArray[objectAreaIndex+totalNoteNum+k], ",", 2):find_nth_overlapping(dataArray[objectAreaIndex+totalNoteNum+k], ",", 3) ] + dataArray[objectAreaIndex+totalNoteNum+k][find_nth_overlapping(dataArray[objectAreaIndex+totalNoteNum+k], ",", 5):dataArray[objectAreaIndex+totalNoteNum+k].find(":")])
 
