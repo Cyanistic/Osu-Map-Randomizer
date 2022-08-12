@@ -44,7 +44,7 @@ def std():
     print("This gamemode is not supported yet.")
 
 def taiko():
-    print("Taiko map detected.")
+    print("Taiko map detected.\nRunning...")
 
     hitsoundArray = ["8","0","12","4"]
     """ newHitsound = True
@@ -75,7 +75,7 @@ def ctb():
     print("This gamemode is not supported yet.")
 
 def mania():
-    print("Mania map detected.")
+    print("Mania map detected.\nRunning...")
 
     xPos = []
     newKey = True
