@@ -80,20 +80,20 @@ def mania():
     xPos = []
     newKey = True
     
-    for i in range(objectAreaIndex, len(dataArray)):
+    for i in range(len(dataArray)-objectAreaIndex):
         for j in range(len(xPos)):
-            if(xPos[j] == dataArray[i][0:dataArray[i].find(",")]):
+            if(xPos[j] == dataArray[i+objectAreaIndex][0:dataArray[i+objectAreaIndex].find(",")]):
                 newKey = False
                 break
             else:
                 newKey = True
         if(newKey):
-            xPos.append(dataArray[i][0:dataArray[i].find(",")])
+            xPos.append(dataArray[i+objectAreaIndex][0:dataArray[i+objectAreaIndex].find(",")])
     
     totalNoteNum = 0
     noteNum = 0
     lnArray = []
-    noteTiming = dataArray[objectAreaIndex][find_nth_overlapping(dataArray[objectAreaIndex], ",", 2)+1:find_nth_overlapping(dataArray[objectAreaIndex], ",", 3)]
+    noteTiming = dataArray[objectAreaIndex][dataArray[objectAreaIndex].find(",", dataArray[objectAreaIndex].find(",")+1)+1:dataArray[objectAreaIndex].find(",", dataArray[objectAreaIndex].find(",", dataArray[objectAreaIndex].find(",")+1)+1)]
     dataArray.append("")
 
     while (totalNoteNum+1 < len(dataArray)-objectAreaIndex):
