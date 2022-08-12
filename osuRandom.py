@@ -40,11 +40,12 @@ def lnCheck(data, ln):
     return False
 
 def std():
+    print("std")
     print("Standard map detected.")
     print("This gamemode is not supported yet.")
 
 def taiko():
-    print("Taiko map detected.\nRunning...")
+    print("Taiko map detected.")
 
     hitsoundArray = ["8","0","12","4"]
     """ newHitsound = True
@@ -71,29 +72,30 @@ def taiko():
     print("Success!")
 
 def ctb():
+    print("ctb")
     print("CTB map detected.")
     print("This gamemode is not supported yet.")
 
 def mania():
-    print("Mania map detected.\nRunning...")
+    print("Mania map detected.")
 
     xPos = []
     newKey = True
     
-    for i in range(len(dataArray)-objectAreaIndex):
+    for i in range(objectAreaIndex, len(dataArray)):
         for j in range(len(xPos)):
-            if(xPos[j] == dataArray[i+objectAreaIndex][0:dataArray[i+objectAreaIndex].find(",")]):
+            if(xPos[j] == dataArray[i][0:dataArray[i].find(",")]):
                 newKey = False
                 break
             else:
                 newKey = True
         if(newKey):
-            xPos.append(dataArray[i+objectAreaIndex][0:dataArray[i+objectAreaIndex].find(",")])
+             xPos.append(dataArray[i][0:dataArray[i].find(",")])
     
     totalNoteNum = 0
     noteNum = 0
     lnArray = []
-    noteTiming = dataArray[objectAreaIndex][dataArray[objectAreaIndex].find(",", dataArray[objectAreaIndex].find(",")+1)+1:dataArray[objectAreaIndex].find(",", dataArray[objectAreaIndex].find(",", dataArray[objectAreaIndex].find(",")+1)+1)]
+    noteTiming = dataArray[objectAreaIndex][find_nth_overlapping(dataArray[objectAreaIndex], ",", 2)+1:find_nth_overlapping(dataArray[objectAreaIndex], ",", 3)]
     dataArray.append("")
 
     while (totalNoteNum+1 < len(dataArray)-objectAreaIndex):
@@ -101,11 +103,13 @@ def mania():
         while(noteTiming == dataArray[objectAreaIndex+totalNoteNum+noteNum][dataArray[objectAreaIndex+totalNoteNum+noteNum].find(",", dataArray[objectAreaIndex+totalNoteNum+noteNum].find(",")+1)+1:dataArray[objectAreaIndex+totalNoteNum+noteNum].find(",", dataArray[objectAreaIndex+totalNoteNum+noteNum].find(",", dataArray[objectAreaIndex+totalNoteNum+noteNum].find(",")+1)+1)] and totalNoteNum+noteNum+1 < len(dataArray)-objectAreaIndex):
             noteNum +=1
         for k in range(noteNum):
-            while(lnCheck(dataArray[objectAreaIndex+totalNoteNum+k], lnArray) or len(randomChoose) == 4 and noteNum != len(xPos)):
+            firstCheck = True
+            while(lnCheck(dataArray[objectAreaIndex+totalNoteNum+k], lnArray) or firstCheck):
                 tempStore = dataArray[objectAreaIndex+totalNoteNum+k][dataArray[objectAreaIndex+totalNoteNum+k].find(","):len(dataArray[objectAreaIndex+totalNoteNum+k])]
                 randSave = random.randint(0, len(randomChoose)-1)
                 dataArray[objectAreaIndex+totalNoteNum+k] = xPos[randomChoose[randSave]] + tempStore
                 randomChoose.pop(randSave)
+                firstCheck = False
             if (dataArray[objectAreaIndex+totalNoteNum+k][find_nth_overlapping(dataArray[objectAreaIndex+totalNoteNum+k], ",", 5):dataArray[objectAreaIndex+totalNoteNum+k].find(":")] != "0"):
                 lnArray.append(dataArray[objectAreaIndex+totalNoteNum+k][0:dataArray[objectAreaIndex+totalNoteNum+k].find(",")] + dataArray[objectAreaIndex+totalNoteNum+k][find_nth_overlapping(dataArray[objectAreaIndex+totalNoteNum+k], ",", 2):find_nth_overlapping(dataArray[objectAreaIndex+totalNoteNum+k], ",", 3) ] + dataArray[objectAreaIndex+totalNoteNum+k][find_nth_overlapping(dataArray[objectAreaIndex+totalNoteNum+k], ",", 5):dataArray[objectAreaIndex+totalNoteNum+k].find(":")])
 
